@@ -10,16 +10,22 @@ function MapContainer() {
   const [zoom, setZoom] = useState(9);
   
 
+  // initialze map when component mounts
   useEffect(() => {
     // if(map.current) return; //initialize map only once
       const map = new mapboxgl.Map({
       container: mapContainerRef.current,
-      style: "mapbox://styles/mapbox/streets-v11",
+      style: "mapbox://styles/mapbox/outdoors-v12",
       center: [longitude, lattitude],
       zoom: zoom
     });
-    // return () => map.remove();
-  });
+
+    // add navigation control
+    map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
+
+    //clean up on unmount
+    return () => map.remove();
+  }, [lattitude, longitude, zoom]); //will trip linter react-hooks/exhaustive-deps - adding lat, lng, zoom 
 
   return(
     <React.Fragment>
