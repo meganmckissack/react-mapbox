@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
+import TreeData from '../api/TreeData.geojson';
 
 mapboxgl.accessToken =`${process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}`;
 
@@ -23,9 +24,46 @@ function MapContainer() {
     // add navigation control
     map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
 
+
+    map.on('load', () => {
+      // add the data source for new a feature collection with no features
+      map.addSource('tree-points-data', {
+        type: 'geojson',
+        data: TreeData
+      });
+
+        // moved this into the on load function because of `style not done loading` error that kept map from rendering and loading first
+       // now add the layer, and reference the data source above by name
+       map.addLayer({
+        id: 'tree-points-layer',  
+        type: 'circle',
+        source: 'tree-points-data',
+        'paint': {
+          'circle-radius': 4,
+          'circle-stroke-width': 2,
+          'circle-color': 'red',
+          'circle-stroke-color': 'white'
+        }
+      });
+
+    });
+
+     
+
+    //   map.on('moveend', async () => {
+    //     //get new center coordinates
+    //     const { lng, lat } = map.getCenter();
+    //     // fetch data
+    //     const results = await TreeData(lng, lat);
+    //     map.getSource('points-data').setData(results);
+    //   });
+    // });
+
     //clean up on unmount
     return () => map.remove();
-  }, [lattitude, longitude, zoom]); //will trip linter react-hooks/exhaustive-deps - adding lat, lng, zoom 
+  }, [lattitude, longitude, zoom]); //will trip linter react-hooks/exhaustive-deps - adding lat, lng, zoom
+  
+
 
   return(
     <React.Fragment>

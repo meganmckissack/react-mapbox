@@ -1,0 +1,141 @@
+
+{
+  "type": "FeatureCollection",
+  "features": [
+ {
+   "type": "Feature",
+   "geometry": {
+      "type": "Point",
+      "coordinates":  [ -122.65687,45.53817 ]
+   },
+   "properties": {
+   "Species":"PRPL",
+   "DBH":14.3,
+   "Condition":"Fair",
+   "Site Type":"strip",
+   "Site Width":3.6,
+   "Wires":"No HV",
+   "Site Dev":"Improved",
+   "Site Size":"Small",
+   "Address":"2143 NE 9TH AVE",
+   "Neighborhd":"IRVINGTON",
+   "Collect By":"staff",
+   "Scientific":"Prunus spp.",
+   "Family":"Rosaceae",
+   "Genus":"Prunus",
+   "Common":"plum",
+   "Type":"BD",
+   "Size":"S",
+   "Edible":"no"
+   }
+ },
+ {
+   "type": "Feature",
+   "geometry": {
+      "type": "Point",
+      "coordinates":  [ 122.65686,45.53831 ]
+   },
+   "properties": {
+   "Species":"MA",
+   "DBH":7.5,
+   "Condition":"Fair",
+   "Site Type":"strip",
+   "Site Width":3.6,
+   "Wires":"No HV",
+   "Site Dev":"Improved",
+   "Site Size":"Small",
+   "Address":"2207 NE 9TH AVE",
+   "Neighborhd":"IRVINGTON",
+   "Collect By":"staff",
+   "Scientific":"Malus spp.",
+   "Family":"Rosaceae",
+   "Genus":"Malus",
+   "Common":"crabapple",
+   "Type":"BD",
+   "Size":"S",
+   "Edible":"no"
+   }
+ },
+ {
+   "type": "Feature",
+   "geometry": {
+      "type": "Point",
+      "coordinates":  [ -122.65686,45.53872 ]
+   },
+   "properties": {
+   "Species":"ZESE",
+   "DBH":5.5,
+   "Condition":"Good",
+   "Site Type":"strip",
+   "Site Width":3.6,
+   "Wires":"No HV",
+   "Site Dev":"Improved",
+   "Site Size":"Small",
+   "Address":"2237 NE 9TH AVE",
+   "Neighborhd":"IRVINGTON",
+   "Collect By":"staff",
+   "Scientific":"Zelkova serrata",
+   "Family":"Ulmaceae",
+   "Genus":"Zelkova",
+   "Common":"zelkova",
+   "Type":"BD",
+   "Size":"M",
+   "Edible":"no"
+   }
+ },
+ {
+   "type": "Feature",
+   "geometry": {
+      "type": "Point",
+      "coordinates":  [ -122.65687,45.5379 ]
+   },
+   "properties": {
+   "Species":"CO",
+   "DBH":3.9,
+   "Condition":"Fair",
+   "Site Type":"strip",
+   "Site Width":3.6,
+   "Wires":"No HV",
+   "Site Dev":"Improved",
+   "Site Size":"Small",
+   "Address":"2121 NE 9TH AVE",
+   "Neighborhd":"IRVINGTON",
+   "Collect By":"staff",
+   "Scientific":"Cornus spp.",
+   "Family":"Cornaceae",
+   "Genus":"Cornus",
+   "Common":"dogwood",
+   "Type":"BD",
+   "Size":"S",
+   "Edible":"no"
+   }
+ },
+ {
+   "type": "Feature",
+   "geometry": {
+      "type": "Point",
+      "coordinates":  [ -122.65686,45.53845 ]
+   },
+   "properties": {
+   "Species":"QU",
+   "DBH":23.7,
+   "Condition":"Fair",
+   "Site Type":"strip",
+   "Site Width":3.6,
+   "Wires":"No HV",
+   "Site Dev":"Improved",
+   "Site Size":"Small",
+   "Address":"2211 NE 9TH AVE",
+   "Neighborhd":"IRVINGTON",
+   "Collect By":"staff",
+   "Scientific":"Quercus spp.",
+   "Family":"Fagaceae",
+   "Genus":"Quercus",
+   "Common":"oak, deciduous",
+   "Type":"BD",
+   "Size":"L",
+   "Edible":"no"
+   }
+ }
+  ]
+}
