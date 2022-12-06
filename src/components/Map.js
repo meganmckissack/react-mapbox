@@ -53,27 +53,47 @@ function MapContainer() {
 
     });
 
-    map.on('click', event => {
-      const features = map.queryRenderedFeatures(event.point, {
-        layers: ["tree-points-data"],
-      })
-      if(features.length > 0) {
-        const feature = features[0]
-        const popupNode = document.createElement('div')
+    // // WIP - add popup
+
+    // map.on('click', event => {
+    //   const features = map.queryRenderedFeatures(event.point, {
+    //     layers: ["tree-points-data"],
+    //   })
+    //   if(features.length > 0) {
+    //     const feature = features[0]
+    //     const popupNode = document.createElement('div')
+    //     ReactDOM.render(
+    //       <Popup 
+    //         name={feature?.properties?.Common}
+    //         size={feature?.properties?.Size}
+    //         edible={feature?.properties?.Edible}
+    //       />,
+    //       popupNode
+    //     )
+    //     popUpRef.current
+    //       .setLngLat(event.lngLat)
+    //       .setDOMContent(popupNode)
+    //       .addTo(map)
+    //   }
+    //   });
+
+    map.on("click", "tree-points-layer", e => {
+      if (e.features.length > 0) {
+        const feature = e.features[0];
+        // create popup node
+        const popupNode = document.createElement("div");
         ReactDOM.render(
-          <Popup 
-            name={feature?.properties?.Common}
-            size={feature?.properties?.Size}
-            edible={feature?.properties?.Edible}
-          />,
-          popupNode
-        )
+        <Popup 
+        feature={feature} 
+
+        />, popupNode);
+        // set popup on map
         popUpRef.current
-          .setLngLat(event.lngLat)
+          .setLngLat(feature.geometry.coordinates)
           .setDOMContent(popupNode)
-          .addTo(map)
+          .addTo(map);
       }
-      });
+    });
      
 
     //   map.on('moveend', async () => {
