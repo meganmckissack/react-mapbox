@@ -1,11 +1,16 @@
 import React, { useRef, useEffect, useState } from 'react';
+import ReactDOM from "react-dom";
 import mapboxgl from 'mapbox-gl';
+import "mapbox-gl/dist/mapbox-gl.css"
 import TreeData from '../api/TreeData.geojson';
+import Popup from './Popup';
 
 mapboxgl.accessToken =`${process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}`;
 
 function MapContainer() {
   const mapContainerRef = useRef(null);
+  const popUpRef = useRef(new mapboxgl.Popup({ offset: 15 }));
+
   const [longitude, setLongitude] = useState(-122.62495);
   const [lattitude, setLattitude] = useState(45.52118);
   const [zoom, setZoom] = useState(9);
@@ -16,7 +21,7 @@ function MapContainer() {
     // if(map.current) return; //initialize map only once
       const map = new mapboxgl.Map({
       container: mapContainerRef.current,
-      style: "mapbox://styles/mapbox/outdoors-v12",
+      style: "mapbox://styles/mapbox/outdoors-v11",
       center: [longitude, lattitude],
       zoom: zoom
     });
@@ -48,6 +53,27 @@ function MapContainer() {
 
     });
 
+    map.on('click', event => {
+      const features = map.queryRenderedFeatures(event.point, {
+        layers: ["tree-points-data"],
+      })
+      if(features.length > 0) {
+        const feature = features[0]
+        const popupNode = document.createElement('div')
+        ReactDOM.render(
+          <Popup 
+            name={feature?.properties?.Common}
+            size={feature?.properties?.Size}
+            edible={feature?.properties?.Edible}
+          />,
+          popupNode
+        )
+        popUpRef.current
+          .setLngLat(event.lngLat)
+          .setDOMContent(popupNode)
+          .addTo(map)
+      }
+      });
      
 
     //   map.on('moveend', async () => {
